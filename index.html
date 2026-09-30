@@ -1,0 +1,168 @@
+.mic-btn,
+    .check-btn {
+        flex: 1;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🌍 English in Real Life</div>
+    <div class="score">⭐ Score: <span id="score">0</span></div>
+</header>
+
+<div class="container">
+
+<section id="home">
+
+    <div class="hero">
+        <h1>🌍 English in Real Life</h1>
+
+        <p>
+            Learn English. Speak English. Use English.
+        </p>
+
+        <p>
+            Practice English through real-life situations!
+        </p>
+
+        <button class="start-btn" onclick="showSituations()">
+            🚀 START ADVENTURE
+        </button>
+    </div>
+
+    <h2 class="section-title">Choose a Situation</h2>
+
+    <div class="situations">
+
+        <div class="card" onclick="startGame('airport')">
+            <div class="emoji">✈️</div>
+            <h3>At the Airport</h3>
+            <p>Travel and find your gate</p>
+        </div>
+
+        <div class="card" onclick="startGame('restaurant')">
+            <div class="emoji">🍔</div>
+            <h3>At the Restaurant</h3>
+            <p>Order food and drinks</p>
+        </div>
+
+        <div class="card" onclick="startGame('shop')">
+            <div class="emoji">🛍️</div>
+            <h3>At the Shop</h3>
+            <p>Ask about prices</p>
+        </div>
+
+        <div class="card" onclick="startGame('directions')">
+            <div class="emoji">🗺️</div>
+            <h3>Asking Directions</h3>
+            <p>Find a place in the city</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="game">
+
+    <div class="game-box">
+
+        <button class="back-btn" onclick="goHome()">
+            ← Back
+        </button>
+
+        <h2 class="situation-title" id="gameTitle"></h2>
+
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="level" id="level">
+            Level 1
+        </div>
+
+        <div class="character">
+            <strong id="characterName"></strong>
+            <p id="dialogue"></p>
+        </div>
+
+        <div class="question" id="question"></div>
+
+        <div class="answer-box">
+
+            <input
+                type="text"
+                id="answer"
+                placeholder="Type your answer or use the microphone..."
+            >
+
+            <button class="mic-btn" onclick="startListening()">
+                🎤
+            </button>
+
+            <button class="check-btn" onclick="checkAnswer()">
+                CHECK
+            </button>
+
+        </div>
+
+        <button class="help-btn" onclick="showHelp()">
+            💡 HELP ME
+        </button>
+
+        <div class="hint-box" id="hintBox">
+
+            <div class="hint">
+                💡 Hint 1: <span id="hint1"></span>
+            </div>
+
+            <div class="hint">
+                💡 Hint 2: <span id="hint2"></span>
+            </div>
+
+            <div class="hint">
+                💡 Example: <span id="hint3"></span>
+            </div>
+
+        </div>
+
+        <div id="feedback" class="feedback"></div>
+
+        <button class="next-btn" id="nextBtn" onclick="nextQuestion()">
+            NEXT →
+        </button>
+
+    </div>
+
+</section>
+
+</div>
+
+
+<script>
+
+const situations = {
+
+    airport: {
+
+        title: "✈️ At the Airport",
+
+        questions: [
+
+            {
+                character: "Airport Worker",
+                dialogue: "Hello! Can I help you?",
+                question: "Ask where Gate 24 is.",
+                answers: [
+                    "where is gate 24",
+                    "where is gate twenty four",
+                    "where's gate 24",
+                    "where's gate twenty four"
+                ],
+                hint1: "You want to ask about a location.",
+                hint2: "Start with: Where is...",
+                hint3: "Where is Gate 24?"
+            },
